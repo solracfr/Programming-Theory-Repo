@@ -1,0 +1,50 @@
+[api-updater (non-obsolete-error-filter)] 10/13/2021 3:22:28 PM : Starting C:/Program Files/Unity/Hub/Editor/2020.3.6f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 647.5309ms
+moved types parse time: 55ms
+candidates parse time : 1ms
+C# parse time         : 289ms
+candidates check time : 44ms
+console write time    : 0ms
+
+[api-updater (non-obsolete-error-filter)] 10/13/2021 3:23:08 PM : Starting C:/Program Files/Unity/Hub/Editor/2020.3.6f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 71.8095ms
+moved types parse time: 54ms
+candidates parse time : 1ms
+C# parse time         : 187ms
+candidates check time : 42ms
+console write time    : 0ms
+
+[api-updater (non-obsolete-error-filter)] 10/13/2021 3:40:00 PM : Starting C:/Program Files/Unity/Hub/Editor/2020.3.6f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 72.0042ms
+moved types parse time: 49ms
+candidates parse time : 1ms
+C# parse time         : 184ms
+candidates check time : 30ms
+console write time    : 0ms
+
+[api-updater (non-obsolete-error-filter)] 10/13/2021 3:40:17 PM : Starting C:/Program Files/Unity/Hub/Editor/2020.3.6f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 73.0209ms
+moved types parse time: 53ms
+candidates parse time : 1ms
+C# parse time         : 181ms
+candidates check time : 29ms
+console write time    : 0ms
+
+[api-updater (non-obsolete-error-filter)] 10/13/2021 3:40:23 PM : Starting C:/Program Files/Unity/Hub/Editor/2020.3.6f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 70.6001ms
+moved types parse time: 48ms
+candidates parse time : 1ms
+C# parse time         : 179ms
+candidates check time : 28ms
+console write time    : 0ms
+
