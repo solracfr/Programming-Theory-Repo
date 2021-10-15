@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int PlayerHP {get; private set;}
+    public int HP {get; private set;}
     public bool isHit {get; private set;}
-    public bool isInvincible {get; private set;}
+    public bool isInvincible {get; set;}
     private float m_Speed = 2f;
     public float Speed // can be accessed elsewhere, like in the enemy script for example
     {
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        HP = 3;
     }
 
     // Update is called once per frame
@@ -42,9 +42,37 @@ public class Player : MonoBehaviour
         transform.Translate(moveDir * m_Speed * Time.deltaTime, Space.World);
     }
 
+    // amtToChange should accept only positive numbers
+    public void ChangeHP(int amtToChange)
+    {
+        HP -= amtToChange;
+    }
+
     void OnTriggerEnter(Collider other) 
     {
-        // if powerup -> make cool shit happen
-        // if enemy -> reduce HP; set hit and Invincibility frames
+        if (other.CompareTag("Enemy"))
+        {
+            StartCoroutine(AffectPlayerStatus(other.gameObject.GetComponent<Enemy>()));
+        }
+
+        if (other.CompareTag("Powerup"))
+        {
+            StartCoroutine(AffectPlayerStatus(other.gameObject.GetComponent<Powerup>()));
+        }
+    }
+
+    public IEnumerator AffectPlayerStatus(Powerup powerup)
+    {
+        MainManager.Instance.MovingSpeed *= powerup.SpeedMultiplier;
+        yield return new WaitForSeconds(powerup.PowerupDuration);
+        MainManager.Instance.MovingSpeed /= powerup.SpeedMultiplier;
+    }
+
+    public IEnumerator AffectPlayerStatus(Enemy enemy)
+    {
+        int originalMovingSpeed = MainManager.Instance.MovingSpeed;
+        MainManager.Instance.MovingSpeed = enemy.AlteredMovingSpeed;
+        yield return new WaitForSeconds(enemy.EffectDuration);
+        MainManager.Instance.MovingSpeed = originalMovingSpeed;
     }
 }

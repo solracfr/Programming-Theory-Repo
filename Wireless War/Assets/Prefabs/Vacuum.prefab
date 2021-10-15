@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2084160230969052693}
   - component: {fileID: 2084160230969052690}
   - component: {fileID: 2084160230969052691}
+  - component: {fileID: 3736833032684919898}
   m_Layer: 0
-  m_Name: Enemy2
-  m_TagString: Untagged
+  m_Name: Vacuum
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,3 +97,19 @@ CapsuleCollider:
   m_Height: 0
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &3736833032684919898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084160230969052688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c123d4a8bc05944938308cb8d227e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TravelAmplitude: 0.6
+  AlteredMovingSpeed: 2
+  EffectDuration: 2
+  MovementFactor: 0
