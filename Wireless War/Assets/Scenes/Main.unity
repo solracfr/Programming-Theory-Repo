@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 26de32b3e93788b438d204925ceef47a, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -897,9 +897,10 @@ MonoBehaviour:
   timerText: {fileID: 76275266}
   spawnedTiles: []
   tilesToPrespawn: 15
-  warmupTiles: 3
+  warmupTiles: 0
   score: 0
   timeLeft: 60
+  movingSpeed: 5
   gameOver: 0
   gameStarted: 0
 --- !u!4 &2014261637

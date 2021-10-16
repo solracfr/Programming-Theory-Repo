@@ -111,5 +111,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TravelAmplitude: 0.6
   AlteredMovingSpeed: 2
-  EffectDuration: 2
+  EffectDuration: 4
   MovementFactor: 0

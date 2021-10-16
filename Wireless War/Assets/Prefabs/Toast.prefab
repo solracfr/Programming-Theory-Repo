@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5902512110174959826}
   - component: {fileID: 5902512110174959827}
   - component: {fileID: 6599051290255172959}
-  - component: {fileID: 4656319959584314136}
+  - component: {fileID: 4214278322336976062}
   m_Layer: 0
   m_Name: Toast
   m_TagString: Powerup
@@ -159,7 +159,7 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &4656319959584314136
+--- !u!114 &4214278322336976062
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,7 +168,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5902512110174959836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 329ab1fc3db3ba04d9ad40567019e5ef, type: 3}
+  m_Script: {fileID: 11500000, guid: d2fcffc58e92e8b40a09ab4e07b45f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SpeedMultiplier: 2
+  powerupDuration: 2
+  GivePlayerShield: 0

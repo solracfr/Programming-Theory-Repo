@@ -48,31 +48,59 @@ public class Player : MonoBehaviour
         HP -= amtToChange;
     }
 
+    public void ResetHP()
+    {
+        HP = 0;
+    }
+
     void OnTriggerEnter(Collider other) 
     {
         if (other.CompareTag("Enemy"))
         {
-            StartCoroutine(AffectPlayerStatus(other.gameObject.GetComponent<Enemy>()));
+            if (isInvincible)
+            {
+                isInvincible = false;
+            }
+            else
+            {   // get the enemy reference
+                Enemy enemy = other.gameObject.GetComponent<Enemy>();
+
+                // call functions for enemy effects;
+                enemy.DealDamage(this, enemy.DamageDealt);
+                StartCoroutine(enemy.AffectStageSpeed());
+            }
+            
+            
         }
 
         if (other.CompareTag("Powerup"))
         {
-            StartCoroutine(AffectPlayerStatus(other.gameObject.GetComponent<Powerup>()));
-        }
-    }
+            // get the powerup reference
+            Powerup powerup = other.gameObject.GetComponent<Powerup>();
+            //powerup reference may get deactivated before the duration is over...
+            int speedMultiplier = powerup.SpeedMultiplier;
+            float duration = powerup.PowerupDuration;
+            bool givePlayerShield = powerup.GivePlayerShield;
 
-    public IEnumerator AffectPlayerStatus(Powerup powerup)
-    {
-        MainManager.Instance.MovingSpeed *= powerup.SpeedMultiplier;
-        yield return new WaitForSeconds(powerup.PowerupDuration);
-        MainManager.Instance.MovingSpeed /= powerup.SpeedMultiplier;
+            if (givePlayerShield)
+            {
+                StartCoroutine(powerup.AffectPlayerStatus(speedMultiplier, duration, this));
+            }
+            else 
+            {
+                StartCoroutine(powerup.AffectPlayerStatus(speedMultiplier, duration));
+            }  
+        }
     }
 
     public IEnumerator AffectPlayerStatus(Enemy enemy)
     {
+        //enemy reference may get deactivated before the duration is over...
         int originalMovingSpeed = MainManager.Instance.MovingSpeed;
+        float duration = enemy.EffectDuration;
+
         MainManager.Instance.MovingSpeed = enemy.AlteredMovingSpeed;
-        yield return new WaitForSeconds(enemy.EffectDuration);
+        yield return new WaitForSeconds(duration);
         MainManager.Instance.MovingSpeed = originalMovingSpeed;
     }
 }

@@ -13,6 +13,7 @@ public class Vacuum : Enemy
         MovementDir = Vector3.right;
         StartPos = transform.localPosition; // gets transform's position on the tile
         DamageDealt = 2;
+        AlteredMovingSpeed = 2;
     }
 
     // Update is called once per frame

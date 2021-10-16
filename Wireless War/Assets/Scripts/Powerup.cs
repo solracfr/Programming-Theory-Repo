@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Powerup : MonoBehaviour
+public class Powerup : MonoBehaviour
 {
     public int SpeedMultiplier;
-    private float powerupDuration;
+    public float powerupDuration; // change to private
+    public bool GivePlayerShield;
     public float PowerupDuration
     {
         get {return powerupDuration;}
@@ -15,5 +16,21 @@ public abstract class Powerup : MonoBehaviour
             else powerupDuration = value;
         }
     }
-    //public abstract IEnumerator AffectPlayerStatus();
+    public virtual IEnumerator AffectPlayerStatus(int speedMultiplier, float powerupDuration, Player player)
+    {
+        player.isInvincible = GivePlayerShield;
+        //int originalMovingSpeed = MainManager.Instance.MovingSpeed;
+
+        MainManager.Instance.MovingSpeed *= SpeedMultiplier;
+        yield return new WaitForSeconds(PowerupDuration);
+        MainManager.Instance.MovingSpeed /= SpeedMultiplier;
+    }
+    public virtual IEnumerator AffectPlayerStatus(int speedMultiplier, float powerupDuration)
+    {
+        //int originalMovingSpeed = MainManager.Instance.MovingSpeed;
+
+        MainManager.Instance.MovingSpeed *= SpeedMultiplier;
+        yield return new WaitForSeconds(PowerupDuration);
+        MainManager.Instance.MovingSpeed /= SpeedMultiplier;
+    }
 }

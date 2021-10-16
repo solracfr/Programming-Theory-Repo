@@ -9,7 +9,7 @@ public class Toast : Powerup
     //DISAPPEARS FROM THE FRONT OF THE TILE LINE
     //(1) MOVE THIS FUNCTION TO THE PLAYER AND USE THIS FUNCTION ONLY TO CALL IT
     //(2) MOVE ALL INTERACTION WITH THIS SCRIPT TO THE PLAYER INSTEAD 
-    public IEnumerator AffectPlayerStatus()
+    public override IEnumerator AffectPlayerStatus(int speedMultiplier, float powerupDuration)
     {
         MainManager.Instance.MovingSpeed *= SpeedMultiplier;
         yield return new WaitForSeconds(PowerupDuration);
@@ -18,7 +18,7 @@ public class Toast : Powerup
 
     void OnTriggerEnter(Collider other) 
     {
-        StartCoroutine(AffectPlayerStatus());
+        //StartCoroutine(AffectPlayerStatus());
         Debug.Log("Toast eaten!");
     }
 }

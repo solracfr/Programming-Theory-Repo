@@ -7,7 +7,7 @@ public abstract class Enemy : MonoBehaviour
     // should  not be a negative number
     public float TravelAmplitude;
     public int AlteredMovingSpeed;
-    public int EffectDuration;
+    public float EffectDuration;
     protected Vector3 MovementDir;
     protected Vector3 StartPos;
 
@@ -41,6 +41,15 @@ public abstract class Enemy : MonoBehaviour
         Vector3 offset = direction * MovementFactor * TravelAmplitude;
 
         transform.localPosition = StartPos + offset;
+    }
+
+    public virtual IEnumerator AffectStageSpeed()
+    {
+        int originalMovingSpeed = MainManager.Instance.MovingSpeed;
+        
+        MainManager.Instance.MovingSpeed = AlteredMovingSpeed;
+        yield return new WaitForSeconds(EffectDuration);
+        MainManager.Instance.MovingSpeed = originalMovingSpeed;
     }
 
     public virtual void DealDamage(Player player, int damageDealt)

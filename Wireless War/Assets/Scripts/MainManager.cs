@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class MainManager : MonoBehaviour
@@ -35,7 +36,7 @@ public class MainManager : MonoBehaviour
     public bool gameStarted = false;
 
 
-
+/*
     void Awake()
     {
         if (Instance != null)
@@ -46,10 +47,11 @@ public class MainManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
     }
-
+*/
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
         // abstraction
         PrespawnTiles();
         //Debug.Log(player.HP);
@@ -60,22 +62,36 @@ public class MainManager : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space) && !gameStarted)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            gameStarted = true;
+            if (!gameStarted)
+            {
+                gameStarted = true;
+            }
+
+            if (gameOver)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                gameStarted = false;
+                gameOver = false;
+            }
         }
 
-        if (gameStarted)
+        if (gameStarted && !gameOver)
         {
             // for some reason, moving the lead tile moves them all if referenced from the List
             transform.Translate(-spawnedTiles[0].transform.forward * Time.deltaTime * (movingSpeed + (score / 500)), Space.World);
             score += Time.deltaTime * movingSpeed;
             timeLeft -= Time.deltaTime;
+
             UpdateUI();
+            RegenerateTiles();
+
+            if (player.HP < 1)
+            {
+                gameOver = true;
+            }
         }
-
-        RegenerateTiles();
-
     }
 
     void RegenerateTiles()
@@ -120,7 +136,13 @@ public class MainManager : MonoBehaviour
     void UpdateUI()
     {
         scoreText.text = $"Score: {(int)score}";
-        lifeText.text = $"Life: {player.HP}";
         timerText.text = $"Time Left: {(int)timeLeft}";
+
+        if (player.HP < 0)
+        {
+            player.ResetHP();
+        }
+        lifeText.text = $"Life: {player.HP}";
+        
     }
 }

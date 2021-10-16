@@ -5,8 +5,6 @@ using UnityEngine;
 // INHERITENCE AND POLYMORPHISM FOR ENEMIES
 public class Toaster : Enemy
 {
-    // the speed at which the track will move once we hit this enemy
-    private int alteredMovingSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +12,7 @@ public class Toaster : Enemy
         MovementDir = Vector3.up;
         StartPos = transform.localPosition; // gets transform's position on the tile
         DamageDealt = 1;
+        AlteredMovingSpeed = 0;
     }
 
     // Update is called once per frame
@@ -29,10 +28,8 @@ public class Toaster : Enemy
 
     private void OnTriggerEnter(Collider other) 
     {
-        if (other.CompareTag("Player"))
-        {
-            DealDamage(other.gameObject.GetComponent<Player>(), DamageDealt);
-        } 
+        // set object as not active
+        // make death FX
     }
 
     public override void DealDamage(Player player, int damageDealt)

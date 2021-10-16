@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 7495010741738466885}
   - component: {fileID: 7495010741738466884}
   - component: {fileID: 7097327618216408008}
+  - component: {fileID: 996655325859690785}
   m_Layer: 0
-  m_Name: Powerup2
+  m_Name: Dust Bunny
   m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,3 +159,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &996655325859690785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7495010741738466891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fcffc58e92e8b40a09ab4e07b45f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedMultiplier: 1
+  powerupDuration: 0
+  GivePlayerShield: 1
